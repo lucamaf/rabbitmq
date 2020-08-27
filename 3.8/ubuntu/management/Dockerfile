@@ -1,6 +1,7 @@
 FROM rabbitmq:3.8
 
-RUN rabbitmq-plugins enable --offline rabbitmq_management
+RUN rabbitmq-plugins enable --offline rabbitmq_management rabbitmq_amqp1_0 rabbitmq_jms_topic_exchange rabbitmq_mqtt
+
 
 # make sure the metrics collector is re-enabled (disabled in the base image for Prometheus-style metrics by default)
 RUN rm -f /etc/rabbitmq/conf.d/management_agent.disable_metrics_collector.conf
